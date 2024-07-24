@@ -1,52 +1,70 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Item 1",
-            "price": 45,
-            "prod_detail": "Details for prod 1"
-        },
-        {
-            "id": 2,
-            "name": "Item 2",
-            "price": 25,
-            "prod_detail": "Details for prod 2"
-        },
-        {
-            "id": 3,
-            "name": "Item 3",
-            "price": 60,
-            "prod_detail": "Details for prod 3"
-        },
-        {
-            "id": 4,
-            "name": "Item 4",
-            "price": 15,
-            "prod_detail": "Details for prod 4"
-        },
-        {
-            "id": 5,
-            "name": "Item 5",
-            "price": 129,
-            "prod_detail": "Details for prod 5"
-        },
-        {
-            "id": 6,
-            "name": "Item 6",
-            "price": 25,
-            "prod_detail": "Details for prod 6"
-        },
-        {
-            "id": 7,
-            "name": "Item 7",
-            "price": 55,
-            "prod_detail": "Details for prod 7"
-        },
-        {
-            "id": 8,
-            "name": "Item 8",
-            "price": 99,
-            "prod_detail": "Details for prod 8"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "description": "Description of Product 1",
+      "price": 29.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "description": "Description of Product 2",
+      "price": 39.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "description": "Description of Product 3",
+      "price": 49.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Product 1",
+      "description": "Description of Product 1",
+      "price": 29.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "name": "Product 2",
+      "description": "Description of Product 2",
+      "price": 39.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 6,
+      "name": "Product 3",
+      "description": "Description of Product 3",
+      "price": 49.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 7,
+      "name": "Product 1",
+      "description": "Description of Product 1",
+      "price": 29.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 8,
+      "name": "Product 2",
+      "description": "Description of Product 2",
+      "price": 39.99,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 9,
+      "name": "Product 3",
+      "description": "Description of Product 3",
+      "price": 49.99,
+      "image": "https://via.placeholder.com/150"
+    }
+  ],
+  "users": [],
+  "cart": [],
+  "wishlist": []
 }
