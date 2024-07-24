@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 const cors = require('cors');
 const bodyParser = require("body-parser");
 
-server.use(cors());
+server.use(cors())
 server.use(middlewares);
 server.use(bodyParser.json());
 
@@ -19,11 +19,7 @@ function createToken(payload) {
 }
 
 function verifyToken(token) {
-    try {
-        return jwt.verify(token, SECRET_KEY);
-    } catch (err) {
-        return null;
-    }
+    return jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ? decode : err);
 }
 
 function isAuthenticated({ email, password }) {
@@ -36,7 +32,7 @@ server.post('/auth/login', (req, res) => {
     if (!isAuthenticated({ email, password })) {
         const status = 401;
         const message = 'Incorrect email or password';
-        res.status(status).json({ status, message });
+        res.status(400).json({ status, message });
         return;
     }
     const access_token = createToken({ email, password });
@@ -57,29 +53,27 @@ server.post('/auth/register', (req, res) => {
     res.status(200).json({ access_token });
 });
 
-// Public routes
-server.use('/products', (req, res, next) => {
-    next();
-});
-
-// Authentication middleware
-server.use(/^(?!\/auth).*$/, (req, res, next) => {
+server.use(/^(?!\/auth|\/products).*$/, (req, res, next) => {
     if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
         const status = 401;
         const message = 'Bad authorization header';
         res.status(status).json({ status, message });
         return;
     }
-    const token = req.headers.authorization.split(' ')[1];
-    const verifyTokenResult = verifyToken(token);
-
-    if (!verifyTokenResult) {
+    try {
+        const verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
+        if (verifyTokenResult instanceof Error) {
+            const status = 401;
+            const message = 'Error: access_token is not valid';
+            res.status(status).json({ status, message });
+            return;
+        }
+        next();
+    } catch (err) {
         const status = 401;
-        const message = 'Error: access_token is not valid';
+        const message = 'Token verification failed';
         res.status(status).json({ status, message });
-        return;
     }
-    next();
 });
 
 server.use(router);
