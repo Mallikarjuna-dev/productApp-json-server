@@ -53,7 +53,7 @@ server.post('/auth/register', (req, res) => {
     res.status(200).json({ access_token });
 });
 
-server.use("/products", router)
+server.use('/products', router);
 
 server.use(/^(?!\/auth|\/products).*$/, (req, res, next) => {
     if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
