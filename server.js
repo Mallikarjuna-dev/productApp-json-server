@@ -54,6 +54,7 @@ server.post('/auth/register', (req, res) => {
 });
 
 server.use(/^(?!\/auth|\/products).*$/, (req, res, next) => {
+    console.log(req.headers)
     if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
         const status = 401;
         const message = 'Bad authorization header';
